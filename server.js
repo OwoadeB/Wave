@@ -31,9 +31,6 @@ app.post('/validate-rule' , (req,res) => {
   const {rule, data} = body;
   const bodyFields = ["rule","data"];
   const ruleFields = ["field","condition","condition_value"];
-  const dataField = rule.field;
-  const condition = rule.condition;
-  const condition_value = rule.condition_value;
 
   if(!rule && !data ) {
     return res.status(400).json({
@@ -84,6 +81,10 @@ app.post('/validate-rule' , (req,res) => {
       })
     }
   }
+
+  const dataField = rule.field;
+  const condition = rule.condition;
+  const condition_value = rule.condition_value;
 
   // handle multilevel fields (e.g parent.child....)
   let value = data; 
